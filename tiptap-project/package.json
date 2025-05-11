@@ -10,16 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^3.1.1-rc.1",
     "@tailwindcss/vite": "^4.1.6",
-    "@tiptap/extension-collaboration": "^3.0.0-beta.5",
-    "@tiptap/pm": "^3.0.0-beta.5",
-    "@tiptap/react": "^3.0.0-beta.5",
-    "@tiptap/starter-kit": "^3.0.0-beta.5",
-    "@tiptap/y-tiptap": "^3.0.0-beta.3",
+    "@tiptap/core": "^2.12.0",
+    "@tiptap/extension-collaboration": "^2.12.0",
+    "@tiptap/extension-collaboration-cursor": "^2.12.0",
+    "@tiptap/extension-placeholder": "^2.12.0",
+    "@tiptap/react": "^2.12.0",
+    "@tiptap/starter-kit": "^2.12.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.6",
+    "undefined": "^0.1.0",
     "y-webrtc": "^10.3.0",
     "y-websocket": "^3.0.0",
     "yjs": "^13.6.26"

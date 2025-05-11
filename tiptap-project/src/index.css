@@ -7,3 +7,30 @@
   margin: 0;
   padding: 0;
 }
+
+
+.collaboration-cursor__caret {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 2px solid;
+  border-color: currentColor;
+  height: 1.2em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.collaboration-cursor__label {
+  position: absolute;
+  top: -1.2em;
+  left: 0;
+  background-color: currentColor;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0 0.25em;
+  border-radius: 0.25em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  z-index: 11;
+}
