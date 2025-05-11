@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.ProseMirror {
+  border: none !important;
+  outline: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
