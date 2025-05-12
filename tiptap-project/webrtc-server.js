@@ -1,18 +1,33 @@
-import { WebSocketServer } from 'ws'; // Import WebSocketServer directly
+// webrtc-server.js
 
-// Create a WebSocket server that listens on port 4444
-const wss = new WebSocketServer({ port: 4444 });
+import { WebSocketServer } from 'ws';
+import http from 'http';
 
+// Use dynamic port for production (Render) or fallback to 4444 for local dev
+const port = process.env.PORT || 4444;
+
+// Create a raw HTTP server (Render requires this)
+const server = http.createServer();
+
+// Create WebSocket server on top of the HTTP server
+const wss = new WebSocketServer({ server });
+
+// Handle WebSocket connections
 wss.on('connection', (ws) => {
   console.log('New client connected.');
 
-  // When the server receives a message from the client, it logs it to the console
   ws.on('message', (message) => {
-    // console.log('Received message:', message);
+    // Optional: Log or handle incoming messages
+    // console.log('Received message:', message.toString());
   });
 
+  ws.on('close', () => {
+    console.log('Client disconnected.');
+  });
 });
 
-// Log the message to ensure the server is running
-console.log('WebRTC signaling server is running at ws://localhost:4444');
-console.log("Server is running...");
+// Start the server
+server.listen(port, () => {
+  console.log(`✅ WebRTC signaling server is running on ws://localhost:${port}`);
+});
+

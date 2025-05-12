@@ -5,5 +5,5 @@ import { WebrtcProvider } from 'y-webrtc';
 export const ydoc = new Y.Doc();
 export const provider = new WebrtcProvider('tiptap-project', ydoc,{
      signaling: [
-    'ws://localhost:4444' //  local signaling server
+    'wss://websocket-backend-for-collaborative-text.onrender.com' 
   ]});
