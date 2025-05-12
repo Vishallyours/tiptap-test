@@ -49,61 +49,59 @@
 //     </>
 //   )
 // }
-
 // export default Tiptap
 
-import { useState, useMemo } from 'react';
+import React from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import * as Y from 'yjs';
-import { WebrtcProvider } from 'y-webrtc';
-import { Collaboration } from '@tiptap/extension-collaboration';
-import { CollaborationCursor } from '@tiptap/extension-collaboration-cursor';
-import { Placeholder } from '@tiptap/extension-placeholder';
-import UsernamePrompt from './UsernamePrompt';
+import Collaboration from '@tiptap/extension-collaboration';
+import CollaborationCursor from '@tiptap/extension-collaboration-cursor';
+import Placeholder from '@tiptap/extension-placeholder';
 
-const Tiptap = () => {
-  const [username, setUsername] = useState('');
-  const [userColor, setUserColor] = useState('');
-  const [isUsernameSet, setIsUsernameSet] = useState(false);
+import { ydoc, provider } from './ydocSetup'; 
 
-  const ydoc = useMemo(() => new Y.Doc(), []);
-  const provider = useMemo(() => new WebrtcProvider('tiptap-project', ydoc), []);
+interface TiptapEditorProps {
+  username: string;
+  userColor: string;
+}
 
-  const editor = useEditor(
-{
+const Editor: React.FC<TiptapEditorProps> = ({ username, userColor }) => {
+  const editor = useEditor({
     extensions: [
       StarterKit,
-      Collaboration.configure({ document: ydoc }),
+      Collaboration.configure({
+        document: ydoc,
+      }),
       CollaborationCursor.configure({
         provider,
         user: {
-          name: username || 'Anonymous',
-          color: userColor || '#ccc',
+          name: username,
+          color: userColor,
         },
       }),
       Placeholder.configure({
-        placeholder: 'Type a message',
+        placeholder: 'Type something...',
       }),
     ],
-    content: '',
   });
 
-  const handleUsernameSet = (name:string, color:string) => {
-    setUsername(name);
-    setUserColor(color);
-    setIsUsernameSet(true);
-  }
+
+ydoc.on('update', () => {
+  console.log('Yjs document updated!');
+});
 
   return (
-    <>
-      {!isUsernameSet ? (
-        <UsernamePrompt onUsernameSet={handleUsernameSet} />
-      ) : (
-         <EditorContent editor={editor} className="border p-4 rounded-lg bg-gray-900 grow-[6]" />
-      )   }
-    </>
+    <div className="w-full max-w-4xl mx-auto">
+      <h2 className="text-xl font-semibold mb-4">Collaborative Editor</h2>
+      <div className="border border-gray-700 p-4 rounded-lg shadow-md bg-gray-800">
+        {editor ? (
+          <EditorContent editor={editor} />
+        ) : (
+          <p className="text-gray-400">Loading editor...</p>
+        )}
+      </div>
+    </div>
   );
 };
 
-export default Tiptap;
+export default Editor;
