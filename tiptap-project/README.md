@@ -1,54 +1,19 @@
-# React + TypeScript + Vite
+# Collaborative Text Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple rich text editor project built with [Tiptap](https://tiptap.dev/), a headless and customizable editor framework for the web. 
 
-Currently, two official plugins are available:
+This app demonstrates the core features of a Tiptap Collaborative editor implemented using **React**, **Typescript**, **Tailwind CSS**, and **Tiptap v2**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔥 Features
 
-## Expanding the ESLint configuration
+-  **Rich Text Editing** (bold, italic, underline, strikethrough)
+-  **Collaborative Editing** (real-time updates)
+-  **Responsive UI** using Tailwind CSS
+-  **User Identification:-** Username input field and different colored cursors for each user
+-  **Copy-Paste Support**
+-  **Built with React with Typescript**
+-  **Tiptap v2** for the editor
+- **Deployed on Render** 
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Live link 
+<u> [Collaborative Text Editor](https://collaborative-text-editor-lg0a.onrender.com/) </u>
